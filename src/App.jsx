@@ -56,7 +56,7 @@ export default function App() {
         path="/signup"
         element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />}
       />
-      <Route path="/*" element={<Navigate to="/login" />} />
+      {/* <Route path="/*" element={<Navigate to="/login" />} /> */}
     </Routes>
   );
 }
