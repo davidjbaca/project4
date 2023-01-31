@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 
+
 import PageHeader from "../../components/PageHeader/PageHeader";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import AddJobApp from "../../components/AddJobApp/AddJobApp";
+import PostDisplay from "../../components/PostDisplay/PostDisplay";
 
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +18,7 @@ import { Grid } from "semantic-ui-react";
 
 import userService from "../../utils/userService";
 
-function ProfilePage({ loggedUser, handleLogout }) {
+function ProfilePage({ loggedUser, handleLogout, handleAddPost }) {
     const [posts, setPosts] = useState([]);
     const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
@@ -83,7 +86,7 @@ function ProfilePage({ loggedUser, handleLogout }) {
           <Grid.Column style={{ maxWidth: 750 }}>
             <PostDisplay
               posts={posts}
-              numPhotosCol={4}
+              postsCol={4}
               isProfile={true}
               loading={loading}
               loggedUser={loggedUser}

@@ -10,7 +10,6 @@ const postSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, // referencing a model
     contact: String,
     email: String,
-    language: String,
     notes: String
     
   })

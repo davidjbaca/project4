@@ -4,13 +4,22 @@ import { Form, Segment, Button } from "semantic-ui-react";
 
 function AddJobApp({handleAddPost}) {
 
-  const [, setCaption] = useState('');
+  const [ employer, setEmployer] = useState('');
+  const [ email, setEmail] = useState('');
+  const [ notes, setNotes] = useState('')
   
 
   function handleChange(e){
-	setCaption(e.target.value)
+	setEmployer(e.target.value)
   }
 
+  function handleChange(e){
+    setEmail(e.target.value)
+  }
+
+  function handleChange(e){
+    setNotes(e.target.value)
+  }
 
   function handleSubmit(e){
 	e.preventDefault();
@@ -18,8 +27,9 @@ function AddJobApp({handleAddPost}) {
 	// we have to make form data because we are sending over a photo
 	// to our express server
 	const formData = new FormData()
-	formData.append('caption', caption);
-	formData.append('photo', photo)
+	formData.append('employer', employer);
+	formData.append('email', email);
+	formData.append('notes', notes)
 	handleAddPost(formData)
   }
 
@@ -28,9 +38,25 @@ function AddJobApp({handleAddPost}) {
       <Form autoComplete="off" onSubmit={handleSubmit}>
         <Form.Input
           className="form-control"
-          name="caption"
-          value={}
-          placeholder="What's on your pups mind?"
+          name="employer"
+          value={employer}
+          placeholder="Employer"
+          onChange={handleChange}
+          required
+        />
+         <Form.Input
+          className="form-control"
+          name="email"
+          value={email}
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+         <Form.Input
+          className="form-control"
+          name="notes"
+          value={notes}
+          placeholder="Notes"
           onChange={handleChange}
           required
         />

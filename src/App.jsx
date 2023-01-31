@@ -37,7 +37,7 @@ export default function App() {
           element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         /> */}
         <Route
-          path="/:username"
+          path="/"
           element={
             <ProfilePage loggedUser={user} handleLogout={handleLogout} />
           }
