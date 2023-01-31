@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
 import PageHeader from "../../components/PageHeader/PageHeader";
+import Loader from "../../components/Loader/Loader";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +17,7 @@ import userService from "../../utils/userService";
 
 function ProfilePage({ loggedUser, handleLogout }) {
     const [posts, setPosts] = useState([]);
-    const [profileUser, setProfileUser] = useState({});
+    // const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
   
