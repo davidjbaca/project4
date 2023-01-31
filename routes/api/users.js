@@ -12,7 +12,7 @@ router.post('/login', usersCtrl.login);
 
 /*---------- Protected Routes ----------*/
 
-
+router.get('/:username', usersCtrl.profile);
 
 
 export default router;

@@ -1,4 +1,5 @@
 import User from '../models/user.js'
+import Post from '../models/post.js';
 import jwt from 'jsonwebtoken'
 const SECRET = process.env.SECRET;
 
@@ -13,10 +14,25 @@ console.log(BUCKET_NAME, 'bucketname')
 
 export default {
   signup,
-  login
+  login,
+  profile
 };
 
+async function profile(req, res){
+  try {
 
+    const user = await User.findOne({username: req.params.username})
+    
+    if(!user) return res.status(404).json({error: 'User not found'})
+
+    const posts = await Post.find({user: user._id}).populate("user").exec();
+    console.log(posts, ' this posts')
+    res.status(200).json({data: posts, user: user})
+  } catch(err){
+    console.log(err)
+    res.status(400).json({err})
+  }
+}
 
 
 async function signup(req, res) {

@@ -17,7 +17,7 @@ import userService from "../../utils/userService";
 
 function ProfilePage({ loggedUser, handleLogout }) {
     const [posts, setPosts] = useState([]);
-    // const [profileUser, setProfileUser] = useState({});
+    const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
   
@@ -53,7 +53,7 @@ function ProfilePage({ loggedUser, handleLogout }) {
       return (
         <>
           <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
-          <ErrorMessage error={error} />;
+          <ErrorMessage error={error} />
         </>
       );
     }
@@ -74,6 +74,11 @@ function ProfilePage({ loggedUser, handleLogout }) {
             <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
           </Grid.Column>
         </Grid.Row>
+        <Grid.Row>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <AddJobApp handleAddPost={handleAddPost} />
+        </Grid.Column>
+      </Grid.Row>
         <Grid.Row centered>
           <Grid.Column style={{ maxWidth: 750 }}>
             <PostDisplay

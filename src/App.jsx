@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
 import { useState } from "react";
 
@@ -28,14 +28,14 @@ export default function App() {
     // are we logged in?
     return (
       <Routes>
-        <Route
+        {/* <Route
           path="/login"
           element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
         <Route
           path="/signup"
           element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-        />
+        /> */}
         <Route
           path="/:username"
           element={
@@ -56,7 +56,7 @@ export default function App() {
         path="/signup"
         element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />}
       />
-      {/* <Route path="/*" element={<Navigate to="/login" />} /> */}
+      <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );
 }

@@ -52,7 +52,7 @@ function SignUpPage({handleSignUpOrLogin}) {
 		// the jwt token is now stored in localstorage
 		handleSignUpOrLogin(); // this function is from the app, which gets the token and sets the user in the App component state
 		// switch the view, switch what page we are on
-		navigate('/')
+		navigate('/:username')
 
 	} catch(err){
 		console.log(err.message, ' this is the error in signup')
