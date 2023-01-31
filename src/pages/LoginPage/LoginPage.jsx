@@ -52,7 +52,7 @@ export default function LoginPage(props) {
     >
       <Grid.Column style={{ maxWidth: 550 }}>
         <Header as="h2" color="black" textAlign="center">
-          <Image style={{ width: 200, height: 200 }} class="ui centered rounded image" src="https://i.imgur.com/FbCtzqwl.png" /> Log-in to your account
+          <Image style={{ width: 200, height: 200 }} className="ui centered rounded image" src="https://i.imgur.com/FbCtzqwl.png" /> Log-in to your account
         </Header>
         <Form onSubmit={handleSubmit}>
           <Segment stacked>
