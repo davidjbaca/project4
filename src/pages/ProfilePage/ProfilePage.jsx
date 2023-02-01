@@ -50,58 +50,25 @@ function ProfilePage({ loggedUser, handleLogout, handleAddPost }) {
       getProfile();
     }, []);
   
-    // if (error) {
-    //   return (
-    //     <>
-    //       <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
-    //       <ErrorMessage error={error} />
-    //     </>
-    //   );
-    // }
+    if (error) {
+      return (
+        <>
+          <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
+          <ErrorMessage error={error} />
+        </>
+      );
+    }
   
-    // if (loading) {
-    //   return (
-    //     <>
-    //       <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
-    //       <Loader />
-    //     </>
-    //   );
-    // }
+    if (loading) {
+      return (
+        <>
+          <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
+          <Loader />
+        </>
+      );
+    }
   
     return (
-    //   <>
-    //   {error ? (     
-    //          <>
-    //            <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
-    //            <ErrorMessage error={error} />
-    //          </>
-    //        ):(<Grid>
-    //         <Grid.Row>
-    //           <Grid.Column>
-    //             <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
-    //           </Grid.Column>
-    //         </Grid.Row>
-    //         <Grid.Row>
-    //         </Grid.Row>
-    //         <Grid.Row>
-    //         <Grid.Column style={{ maxWidth: 450 }}>
-    //           <AddJobApp handleAddPost={handleAddPost} />
-    //         </Grid.Column>
-    //       </Grid.Row>
-    //         <Grid.Row centered>
-    //           <Grid.Column style={{ maxWidth: 750 }}>
-    //             <PostDisplay
-    //               posts={posts}
-    //               postsCol={4}
-    //               isProfile={true}
-    //               loading={loading}
-    //               loggedUser={loggedUser}
-    
-    //             />
-    //           </Grid.Column>
-    //         </Grid.Row>
-    //       </Grid>)}
-    //    </>
       <Grid>
         <Grid.Row>
           <Grid.Column>

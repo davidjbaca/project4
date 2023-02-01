@@ -2,6 +2,9 @@ import { set } from "mongoose";
 import { useState } from "react";
 import { Form, Segment, Button } from "semantic-ui-react";
 
+import PageHeader from "../PageHeader/PageHeader";
+import PostDisplay from "../PostDisplay/PostDisplay";
+
 function AddJobApp({handleAddPost}) {
 
   const [ employer, setEmployer] = useState('');
@@ -9,15 +12,15 @@ function AddJobApp({handleAddPost}) {
   const [ notes, setNotes] = useState('')
   
 
-  function handleChange(e){
+  function handleEmployerChange(e){
 	setEmployer(e.target.value)
   }
 
-  function handleChange(e){
+  function handleEmailChange(e){
     setEmail(e.target.value)
   }
 
-  function handleChange(e){
+  function handleNotesChange(e){
     setNotes(e.target.value)
   }
 
@@ -28,7 +31,7 @@ function AddJobApp({handleAddPost}) {
 	// to our express server
 	const formData = new FormData()
 	formData.append('employer', employer);
-	formData.append('email', email);
+	formData.append('email', email)
 	formData.append('notes', notes)
 	handleAddPost(formData)
   }
@@ -41,7 +44,7 @@ function AddJobApp({handleAddPost}) {
           name="employer"
           value={employer}
           placeholder="Employer"
-          onChange={handleChange}
+          onChange={handleEmployerChange}
           required
         />
          <Form.Input
@@ -49,7 +52,7 @@ function AddJobApp({handleAddPost}) {
           name="email"
           value={email}
           placeholder="Email"
-          onChange={handleChange}
+          onChange={handleEmailChange}
           required
         />
          <Form.Input
@@ -57,7 +60,7 @@ function AddJobApp({handleAddPost}) {
           name="notes"
           value={notes}
           placeholder="Notes"
-          onChange={handleChange}
+          onChange={handleNotesChange}
           required
         />
 

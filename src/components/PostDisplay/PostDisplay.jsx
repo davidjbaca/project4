@@ -17,9 +17,6 @@ export default function PostDisplay({posts, postsCol, isProfile, loading, logged
     }
 
 
-
-
-
     return (
         <Card.Group itemsPerRow={postsCol} stackable>
         {posts?.map((post) => {
