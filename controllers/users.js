@@ -1,20 +1,23 @@
 import User from '../models/user.js'
-import Post from '../models/post.js';
+import Post from '../models/post.js'
 import jwt from 'jsonwebtoken'
 const SECRET = process.env.SECRET;
 
 import S3 from 'aws-sdk/clients/s3.js';
-
+// initialize the S3 consturctor function to give us the object that can perform crud operations to aws
 const s3 = new S3();
 
+// We'll use this module to help us generate random names for our photo files on aws
 import { v4 as uuidv4 } from 'uuid';
 
+// So we don't have to worry about people having different bucket names we'll make the bucketname an environment variable
 const BUCKET_NAME = process.env.BUCKET_NAME
 console.log(BUCKET_NAME, 'bucketname')
 
+
 export default {
   signup,
-  login,
+  login, 
   profile
 };
 
@@ -22,7 +25,7 @@ async function profile(req, res){
   try {
 
     const user = await User.findOne({username: req.params.username})
-    console.log(user)
+
     if(!user) return res.status(404).json({error: 'User not found'})
 
     const posts = await Post.find({user: user._id}).populate("user").exec();
@@ -34,16 +37,15 @@ async function profile(req, res){
   }
 }
 
-
 async function signup(req, res) {
   console.log(req.body, " <- contents of the form", req.file, ' <- this is req.file')
 
   if(!req.file) return res.status(400).json({error: "Please Submit a Photo"})
 
-  // where we will store our image on aws s3 bucket
+
   const filePath = `jobtracker/${uuidv4()}-${req.file.originalname}`
   const params = {Bucket: BUCKET_NAME, Key: filePath, Body: req.file.buffer}; // req.file.buffer is the actually from the form when it was sent to our express server
-  // s3.upload is making the request to s3
+
   s3.upload(params, async function(err, data){ // < inside the function in the response from aws
     if(err){
       console.log('===============================')
@@ -66,13 +68,13 @@ async function signup(req, res) {
 
 
 
-  }) 
-} 
-
+  }) // end of the s3 callback
+} // end of signup
 
 async function login(req, res) {
  
   try {
+    // if this doesn't find anything it returns undefined
     const user = await User.findOne({email: req.body.email});
    
     if (!user) return res.status(401).json({err: 'bad credentials'});

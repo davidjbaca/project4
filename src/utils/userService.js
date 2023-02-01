@@ -5,7 +5,8 @@ const BASE_URL = '/api/users/';
 function signup(user) {
   return fetch(BASE_URL + 'signup', {
     method: 'POST',
-    body: user
+    // what do datatype do you need to change this too?
+    body:user
   })
   .then(res => {
     if (res.ok) return res.json();

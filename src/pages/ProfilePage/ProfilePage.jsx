@@ -23,24 +23,22 @@ function ProfilePage({ loggedUser, handleLogout, handleAddPost }) {
     const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-  
-    const { username } = useParams(); 
-  
-    console.log("username in Profile page -> ", username);
 
   
     async function getProfile() {
       try {
         
-        const response = await userService.getProfile(username);
+        const userObject = await userService.getUser();
+        const response = await userService.getProfile(userObject.username)
+        console.log(userObject.username, "<----- response" )
   
         setLoading(false); 
-        setPosts(response.data);
-        setProfileUser(response.user);
+        setPosts(response.posts);
+        setProfileUser(response.profileUser);
         console.log(response, " <- data is getprofile");
       } catch (err) {
         console.log(
-          err.message,
+          err,
           " error in getProfile something went wrong with the getProfile api request, check server terminal"
         );
         setLoading(false);
@@ -50,32 +48,67 @@ function ProfilePage({ loggedUser, handleLogout, handleAddPost }) {
   
     useEffect(() => {
       getProfile();
-    }, [username]);
+    }, []);
   
-    if (error) {
-      return (
-        <>
-          <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
-          <ErrorMessage error={error} />
-        </>
-      );
-    }
+    // if (error) {
+    //   return (
+    //     <>
+    //       <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
+    //       <ErrorMessage error={error} />
+    //     </>
+    //   );
+    // }
   
-    if (loading) {
-      return (
-        <>
-          <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
-          <Loader />
-        </>
-      );
-    }
+    // if (loading) {
+    //   return (
+    //     <>
+    //       <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
+    //       <Loader />
+    //     </>
+    //   );
+    // }
   
     return (
+    //   <>
+    //   {error ? (     
+    //          <>
+    //            <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
+    //            <ErrorMessage error={error} />
+    //          </>
+    //        ):(<Grid>
+    //         <Grid.Row>
+    //           <Grid.Column>
+    //             <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
+    //           </Grid.Column>
+    //         </Grid.Row>
+    //         <Grid.Row>
+    //         </Grid.Row>
+    //         <Grid.Row>
+    //         <Grid.Column style={{ maxWidth: 450 }}>
+    //           <AddJobApp handleAddPost={handleAddPost} />
+    //         </Grid.Column>
+    //       </Grid.Row>
+    //         <Grid.Row centered>
+    //           <Grid.Column style={{ maxWidth: 750 }}>
+    //             <PostDisplay
+    //               posts={posts}
+    //               postsCol={4}
+    //               isProfile={true}
+    //               loading={loading}
+    //               loggedUser={loggedUser}
+    
+    //             />
+    //           </Grid.Column>
+    //         </Grid.Row>
+    //       </Grid>)}
+    //    </>
       <Grid>
         <Grid.Row>
           <Grid.Column>
             <PageHeader handleLogout={handleLogout} loggedUser={loggedUser}/>
           </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
         </Grid.Row>
         <Grid.Row>
         <Grid.Column style={{ maxWidth: 450 }}>
@@ -90,6 +123,7 @@ function ProfilePage({ loggedUser, handleLogout, handleAddPost }) {
               isProfile={true}
               loading={loading}
               loggedUser={loggedUser}
+
             />
           </Grid.Column>
         </Grid.Row>
