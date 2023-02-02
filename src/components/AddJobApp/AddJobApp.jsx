@@ -29,11 +29,8 @@ function AddJobApp({handleAddPost}) {
 
 	// we have to make form data because we are sending over a photo
 	// to our express server
-	const formData = new FormData()
-	formData.append('employer', employer);
-	formData.append('link', link)
-	formData.append('notes', notes)
-	handleAddPost(formData)
+	const post = {employer, link, notes}
+	handleAddPost(post)
   }
 
   return (

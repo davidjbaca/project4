@@ -12,8 +12,8 @@ function PostCard({ post, isProfile }) {
       ) : (
         <Card.Content textAlign="left">
           <Card.Header>
-            <Link to={`/${post.user.username}`}>
-              <Image
+            <Link to='/'>
+              {/* <Image
                 size="large"
                 avatar
                 src={
@@ -21,7 +21,7 @@ function PostCard({ post, isProfile }) {
                     ? post.user.photoUrl
                     : "https://react.semantic-ui.com/images/wireframe/square-image.png"
                 }
-              />
+              /> */}
               {post.user.username}
             </Link>
           </Card.Header>
@@ -29,7 +29,7 @@ function PostCard({ post, isProfile }) {
       )}
 
       <Card.Content>
-        <Card.Description>{post.employer}</Card.Description>
+        <Card.Description><strong>{post.employer}</strong></Card.Description>
       </Card.Content>
       <Card.Content>
         <Card.Description>{post.link}</Card.Description>

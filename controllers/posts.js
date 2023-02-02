@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 import Post from '../models/post.js';
-import S3 from "aws-sdk/clients/s3.js";
-const s3 = new S3(); // initate the S3 constructor which can talk to aws/s3 our bucket!
+import {s3} from '../config/s3-config.js'
+
 // import uuid to help generate random names
 import { v4 as uuidv4 } from "uuid";
 // since we are sharing code, when you pull you don't want to have to edit the
@@ -27,7 +27,6 @@ async function create(req, res) {
         employer: req.body.employer,
         link: req.body.link,
         notes: req.body.notes,
-         // <- this is from aws, it is the URL that our picture exists at in s3 bucket
       })
 
       await post.populate('user')// populating on a document "post"

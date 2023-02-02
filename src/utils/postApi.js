@@ -6,7 +6,9 @@ export function create(data){
 		method: 'POST',
 		body: JSON.stringify(data),
 		headers: {
-			Authorization: "Bearer " + tokenService.getToken() 
+			Authorization: "Bearer " + tokenService.getToken(),
+            'Content-Type': 'application/json' 
+            
 			//this is how we grab the token from local storage
 		}
 

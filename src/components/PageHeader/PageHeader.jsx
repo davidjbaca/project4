@@ -13,7 +13,7 @@ function PageHeader({ loggedUser, handleLogout }) {
         </Link>
       </Header>
       <Header as="h2" floated="left">
-        <Link to={`/${loggedUser?.username}`}>
+        <Link to="/">
           <Image
             src={
               loggedUser?.photoUrl

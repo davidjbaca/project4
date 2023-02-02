@@ -31,11 +31,11 @@ function ProfilePage({ loggedUser, handleLogout }) {
         
         const userObject = await userService.getUser();
         const response = await userService.getProfile(userObject.username)
-        console.log(userObject.username, "<----- response" )
+        console.log(response, "<---- response" )
   
         setLoading(false); 
-        setPosts(response.posts);
-        setProfileUser(response.profileUser);
+        setPosts(response.data);
+        setProfileUser(response.user);
         console.log(response, " <- data is getprofile");
       } catch (err) {
         console.log(
@@ -68,7 +68,7 @@ function ProfilePage({ loggedUser, handleLogout }) {
         setLoading(true);
         const response = await postsAPI.create(post);
         console.log(response, "handle post");
-        setPosts([response.post]);
+        setPosts([response.post, ...posts]);
         setLoading(false);
         }catch (err) {
         
@@ -77,22 +77,22 @@ function ProfilePage({ loggedUser, handleLogout }) {
         }  
     }
 
-    async function getPosts() {
-        try {
-          const response = await postsAPI.getAll();
-          console.log(response, " data");
-          setPosts(response.data);
-          setLoading(false);
-        } catch (err) {
-          console.log(err.message, " this is the error in getPosts");
-          setLoading(false);
-        }
-    }
-    useEffect(() => {
-        //Getting posts, C(R)UD
+    // async function getPosts() {
+    //     try {
+    //       const response = await postsAPI.getAll();
+    //       console.log(response, " data");
+    //       setPosts(response.data);
+    //       setLoading(false);
+    //     } catch (err) {
+    //       console.log(err.message, " this is the error in getPosts");
+    //       setLoading(false);
+    //     }
+    // }
+    // useEffect(() => {
+    //     //Getting posts, C(R)UD
     
-        getPosts();
-    }, []); 
+    //     getPosts();
+    // }, []); 
   
     useEffect(() => {
       getProfile();
