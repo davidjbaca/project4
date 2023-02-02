@@ -2,7 +2,7 @@ import tokenService from "./tokenService";
 const BASE_URL = '/api/posts/';
 
 export function create(data){
-	return fetch(BASE_URL, { // since this is sending a photo (form data) no need to do JSON things
+	return fetch(BASE_URL, { 
 		method: 'POST',
 		body: JSON.stringify(data),
 		headers: {
@@ -25,11 +25,12 @@ export function create(data){
 }
 
 export function deletePost(data){
-    return fetch(BASE_URL, {
+    return fetch(`${BASE_URL},/${post._id}` {
         method: 'DELETE',
         body: JSON.stringify(data),
         headers:{
-            Authorization: "Bearer " = tokenService.getToken()
+            Authorization: "Bearer" = tokenService.getToken(),
+            'Content-Type': 'application/json'
         }
     }).then((responseFromTheServer) => {
         if(responseFromTheServer.ok) return responseFromTheServer.json()

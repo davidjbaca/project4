@@ -2,7 +2,7 @@ import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 
-function PostCard({ post, isProfile }) {
+function PostCard({ post, isProfile, deletePost }) {
 
 
   return (
@@ -37,6 +37,7 @@ function PostCard({ post, isProfile }) {
       <Card.Content>
         <Card.Description>{post.notes}</Card.Description>
       </Card.Content>
+
     </Card>
   );
 }

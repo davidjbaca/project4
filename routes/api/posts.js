@@ -12,4 +12,5 @@ const upload = multer()
 router.post('/', postsCtrl.create);
 router.get('/', postsCtrl.index);
 router.delete('/:id', postsCtrl.deletePost)
+
 export default router;
