@@ -2,7 +2,9 @@ import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 
+
 function PostCard({ post, isProfile, deletePost }) {
+
 
 
   return (
@@ -36,6 +38,9 @@ function PostCard({ post, isProfile, deletePost }) {
       </Card.Content>
       <Card.Content>
         <Card.Description>{post.notes}</Card.Description>
+      </Card.Content>
+      <Card.Content extra textAlign={"left"}>
+        <Icon name={"delete"} size="large" onClick={() => deletePost(post._id)}/>
       </Card.Content>
 
     </Card>

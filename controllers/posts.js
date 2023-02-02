@@ -4,7 +4,8 @@ import {s3} from '../config/s3-config.js'
 
 // import uuid to help generate random names
 import { v4 as uuidv4 } from "uuid";
-import { post } from "request";
+
+
 // since we are sharing code, when you pull you don't want to have to edit the
 // the bucket name, thats why we're using an environment variable
 const BUCKET_NAME = process.env.BUCKET_NAME;

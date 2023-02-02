@@ -24,13 +24,14 @@ export function create(data){
 	})
 }
 
-export function deletePost(data){
-    return fetch(`${BASE_URL},/${post._id}` {
+
+export function deletePost(postId){
+    return fetch(BASE_URL+ postId , {
         method: 'DELETE',
-        body: JSON.stringify(data),
+        // body: JSON.stringify(data),
         headers:{
-            Authorization: "Bearer" = tokenService.getToken(),
-            'Content-Type': 'application/json'
+            Authorization: ' Bearer ' + tokenService.getToken(),
+            // 'Content-Type': 'application/json'
         }
     }).then((responseFromTheServer) => {
         if(responseFromTheServer.ok) return responseFromTheServer.json()

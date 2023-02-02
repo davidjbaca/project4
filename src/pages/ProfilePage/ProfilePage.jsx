@@ -19,7 +19,7 @@ import { Grid } from "semantic-ui-react";
 
 import userService from "../../utils/userService";
 
-function ProfilePage({ loggedUser, handleLogout }) {
+function ProfilePage({ loggedUser, handleLogout, deletePost }) {
     const [posts, setPosts] = useState([]);
     const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
@@ -47,19 +47,16 @@ function ProfilePage({ loggedUser, handleLogout }) {
       }
     }
 
-    // async function handleAddPost(post){
-    //     try{
-
-    //     setLoading(true);
-    //     const response = await postsAPI.create(post);
-    //     console.log([response.post, ...posts]);
-    //     setLoading(false);
-    //     }catch (err) {
-
-    //     console.log(err.message, "error in addPost");
-    //     setError("error creating post, please try again");
-    //     }
-    // }
+    async function deletePost(postId){
+      try {
+        const response = await postsAPI.deletePost(postId);
+        console.log(response, "delete post");
+        getProfile();
+      } catch (err) {
+        console.log(err);
+        setError('post not deleting')
+      }
+    }
 
     async function handleAddPost(post){
         
@@ -138,6 +135,7 @@ function ProfilePage({ loggedUser, handleLogout }) {
               isProfile={true}
               loading={loading}
               loggedUser={loggedUser}
+              deletePost={deletePost}
 
             />
           </Grid.Column>
