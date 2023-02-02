@@ -13,27 +13,21 @@ export default {
   index,
 };
 
-function create(req, res) {
+async function create(req, res) {
   console.log(req.user, " <- req.user", req.body)
 
   
 
-  // generate our key for our photo on aws
-  const key = `pupstagram/posts/${uuidv4()}-${req.body.originalname}`;
-  const params = { Bucket: BUCKET_NAME, Key: key, Body: req.body}
-  // upload image to aws
-  s3.upload(params, async function(err, data){
-    console.log('========================')
-    console.log(err, ' err from aws')
-    console.log('========================')
-    if (err) return res.status(400).json({err: 'Check terminal error from aws'})
+
 
     try {
       // adding our post information to the database
       const post = await Post.create({
         user: req.user._id,
-        caption: req.body.caption,
-        photoUrl: data.Location // <- this is from aws, it is the URL that our picture exists at in s3 bucket
+        employer: req.body.employer,
+        link: req.body.link,
+        notes: req.body.notes,
+         // <- this is from aws, it is the URL that our picture exists at in s3 bucket
       })
 
       await post.populate('user')// populating on a document "post"
@@ -44,8 +38,8 @@ function create(req, res) {
     } catch(err){
       res.status(400).json({err})
     }
-  })// end of s3 upload  
-}
+  } 
+
 
 async function index(req, res) {
   try {

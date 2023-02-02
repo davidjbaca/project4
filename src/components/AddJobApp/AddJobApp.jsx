@@ -8,7 +8,7 @@ import PostDisplay from "../PostDisplay/PostDisplay";
 function AddJobApp({handleAddPost}) {
 
   const [ employer, setEmployer] = useState('');
-  const [ email, setEmail] = useState('');
+  const [ link, setLink] = useState('');
   const [ notes, setNotes] = useState('')
   
 
@@ -16,8 +16,8 @@ function AddJobApp({handleAddPost}) {
 	setEmployer(e.target.value)
   }
 
-  function handleEmailChange(e){
-    setEmail(e.target.value)
+  function handleLinkChange(e){
+    setLink(e.target.value)
   }
 
   function handleNotesChange(e){
@@ -31,7 +31,7 @@ function AddJobApp({handleAddPost}) {
 	// to our express server
 	const formData = new FormData()
 	formData.append('employer', employer);
-	formData.append('email', email)
+	formData.append('link', link)
 	formData.append('notes', notes)
 	handleAddPost(formData)
   }
@@ -49,10 +49,10 @@ function AddJobApp({handleAddPost}) {
         />
          <Form.Input
           className="form-control"
-          name="email"
-          value={email}
-          placeholder="Email"
-          onChange={handleEmailChange}
+          name="link"
+          value={link}
+          placeholder="Job listing link"
+          onChange={handleLinkChange}
           required
         />
          <Form.Input

@@ -4,7 +4,7 @@ const BASE_URL = '/api/posts/';
 export function create(data){
 	return fetch(BASE_URL, { // since this is sending a photo (form data) no need to do JSON things
 		method: 'POST',
-		body: data,
+		body: JSON.stringify(data),
 		headers: {
 			Authorization: "Bearer " + tokenService.getToken() 
 			//this is how we grab the token from local storage

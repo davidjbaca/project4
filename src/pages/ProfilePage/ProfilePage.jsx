@@ -6,6 +6,7 @@ import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import AddJobApp from "../../components/AddJobApp/AddJobApp";
 import PostDisplay from "../../components/PostDisplay/PostDisplay";
+import * as postsAPI from "../../utils/postApi";
 
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +19,7 @@ import { Grid } from "semantic-ui-react";
 
 import userService from "../../utils/userService";
 
-function ProfilePage({ loggedUser, handleLogout, handleAddPost }) {
+function ProfilePage({ loggedUser, handleLogout }) {
     const [posts, setPosts] = useState([]);
     const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
@@ -45,6 +46,53 @@ function ProfilePage({ loggedUser, handleLogout, handleAddPost }) {
         setError("Profile does not exist"); 
       }
     }
+
+    // async function handleAddPost(post){
+    //     try{
+
+    //     setLoading(true);
+    //     const response = await postsAPI.create(post);
+    //     console.log([response.post, ...posts]);
+    //     setLoading(false);
+    //     }catch (err) {
+
+    //     console.log(err.message, "error in addPost");
+    //     setError("error creating post, please try again");
+    //     }
+    // }
+
+    async function handleAddPost(post){
+        
+        try{
+
+        setLoading(true);
+        const response = await postsAPI.create(post);
+        console.log(response, "handle post");
+        setPosts([response.post]);
+        setLoading(false);
+        }catch (err) {
+        
+        console.log(err.message, "error in addPost"); 
+        setError("error creating post, please try again");
+        }  
+    }
+
+    async function getPosts() {
+        try {
+          const response = await postsAPI.getAll();
+          console.log(response, " data");
+          setPosts(response.data);
+          setLoading(false);
+        } catch (err) {
+          console.log(err.message, " this is the error in getPosts");
+          setLoading(false);
+        }
+    }
+    useEffect(() => {
+        //Getting posts, C(R)UD
+    
+        getPosts();
+    }, []); 
   
     useEffect(() => {
       getProfile();

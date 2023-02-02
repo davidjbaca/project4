@@ -8,8 +8,8 @@ import mongoose from 'mongoose';
 // A post has many likes, a like belongs to a POST
 const postSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, // referencing a model
-    contact: String,
-    email: String,
+    employer: String,
+    link: String,
     notes: String
     
   })
