@@ -4,6 +4,7 @@ import {s3} from '../config/s3-config.js'
 
 // import uuid to help generate random names
 import { v4 as uuidv4 } from "uuid";
+import { post } from "request";
 // since we are sharing code, when you pull you don't want to have to edit the
 // the bucket name, thats why we're using an environment variable
 const BUCKET_NAME = process.env.BUCKET_NAME;
@@ -11,14 +12,21 @@ const BUCKET_NAME = process.env.BUCKET_NAME;
 export default {
   create,
   index,
+  deletePost
 };
+
+async function deletePost(req, res){
+  try {
+      await Post.findByIdAndDelete(req.params.id);
+      res.json({ data: 'JobApp deleted' })
+  } catch (err) {
+      res.status(400).json({ err });
+  }
+}
+
 
 async function create(req, res) {
   console.log(req.user, " <- req.user", req.body)
-
-  
-
-
 
     try {
       // adding our post information to the database

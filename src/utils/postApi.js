@@ -24,6 +24,24 @@ export function create(data){
 	})
 }
 
+export function deletePost(data){
+    return fetch(BASE_URL, {
+        method: 'DELETE',
+        body: JSON.stringify(data),
+        headers:{
+            Authorization: "Bearer " = tokenService.getToken()
+        }
+    }).then((responseFromTheServer) => {
+        if(responseFromTheServer.ok) return responseFromTheServer.json()
+
+        return responseFromTheServer.json().then(res => {
+            console.log(res, "<---- this is the resonst for the delete posts function in the utils folder ")
+            throw new Error('error deleting a post, check the erver terminal')
+        })
+    })
+}
+
+
 export function getAll() {
 	return fetch(BASE_URL, {
 	  headers: {

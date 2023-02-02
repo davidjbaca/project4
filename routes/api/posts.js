@@ -10,5 +10,6 @@ const upload = multer()
 // this the route that processes a request from "React"/browser
 // to create a post
 router.post('/', postsCtrl.create);
-router.get('/', postsCtrl.index)
+router.get('/', postsCtrl.index);
+router.delete('/:id', postsCtrl.deletePost)
 export default router;
