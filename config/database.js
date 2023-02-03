@@ -1,10 +1,9 @@
 import mongoose from 'mongoose'
 
 mongoose.connect(
-  'mongodb://127.0.0.1:27017/jobtracker'// < replace with your database name!
+  process.env.DATABASE_URL// < replace with your database name!
 
 );
-
 const db = mongoose.connection;
 
 db.on('connected', function() {

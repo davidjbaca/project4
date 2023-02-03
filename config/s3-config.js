@@ -12,8 +12,8 @@ if(process.env.CYCLIC_APP_ID){
 	config = {
 		region: process.env.MY_REGION,
 		credentials:{
-			accessKeyId: process.env.MY_AWS_ACCESS_KEY_ID,
-			secretAccessKey: process.env.MY_AWS_SECRET_ACCESS_KEY
+			accessKeyId: process.env.AKIAQDVLGWIJI5N7U5PQ,
+			secretAccessKey: process.env.neT82weMHBri4KMRJO10HVo1cxaLzxaKj58QEZFt
 		}
 	  }
 }
