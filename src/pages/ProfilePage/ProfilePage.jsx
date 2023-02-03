@@ -123,12 +123,12 @@ function ProfilePage({ loggedUser, handleLogout, deletePost }) {
         <Grid.Row>
         </Grid.Row>
         <Grid.Row>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 300 }}>
           <AddJobApp handleAddPost={handleAddPost} />
         </Grid.Column>
       </Grid.Row>
         <Grid.Row centered>
-          <Grid.Column style={{ maxWidth: 750 }}>
+          <Grid.Column style={{ maxWidth: 850 }}>
             <PostDisplay
               posts={posts}
               postsCol={4}
