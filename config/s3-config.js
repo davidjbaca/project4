@@ -18,7 +18,7 @@ if(process.env.CYCLIC_APP_ID){
 	  }
 }
 
-console.log(process.env.CYCLIC_APP_ID, ' prod')
+console.log(process.env.CYCLIC_APP_ID, ' prod ')
 
 
 export const s3 = new S3(config); 
