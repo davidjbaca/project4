@@ -31,7 +31,7 @@ function PostCard({ post, isProfile, deletePost }) {
       )}
 
       <Card.Content>
-        <Card.Description><strong>{post.employer}</strong></Card.Description>
+        <Card.Description><strong><h3>{post.employer}</h3></strong></Card.Description>
       </Card.Content>
       <Card.Content>
         <Card.Description>{post.link}</Card.Description>
