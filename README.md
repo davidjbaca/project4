@@ -1,32 +1,39 @@
+# MERN Project 4: Job Tracker 
 
-# Mern Boilerplate
+By David Baca
 
-This is a mern Boilerplate using vite to compile the frontend.  
+Link: https://long-gold-crow-sari.cyclic.app/
 
-##### Things to note
+# PRE PLANNING ERD + WIREFRAME + PROJECT MANAGEMENT
+Trello: https://trello.com/b/JQBntz1s/project-4
+A link to the Trello board used for the project's planning that includes user stories, wireframes & an ERD:
 
-1. The server code is using `import`, currently you have to add the file extension in the server code. 
+# Tech
+Mongoose, Express, React, Node.js, AWS S3 Bucket, Bcrypt, Semantic Ui React
 
-2.  Note the `index.html` for the code needed to be added for hot reloading and etc... 
+# Description:
 
-3. Code is setup to use `JWT` auth
+Job Tracker: 
 
-4. Take a look at the server.js code, there is some es6 things to setup `__dirname`
+Deadline: 1 Week
+
+With the layoffs nation wide recently I saw a need to keep up with your 
 
 
-#### Setup 
+# Screenshots:
 
-1. ```npm install```
-2. ```npm run dev```
-3. setup `.env` file 
+![Login Page](https://i.imgur.com/vtVcICR.png)
 
-- .env file 
+![Sign Up](https://i.imgur.com/kxClURx.png)
 
-```
-SECRET=seiRocks!
-```
+![Home/Profile Page](https://i.imgur.com/y1K1NlC.png)
 
-##### Starting the App
 
-- One terminal
-command - ```npm run dev```
+
+# Next Steps:
+
+1. Improve styling.
+2. Incorporate a notification to new employment postings.
+3. Layout the profile with you're personal goals and a link to resume, github, etc.
+4. Actual Admin functionality
+
