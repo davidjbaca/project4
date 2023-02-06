@@ -12,8 +12,7 @@ import userService from "./utils/userService";
 export default function App() {
   const [user, setUser] = useState(userService.getUser()); // if theres a token, grab it, if not the value will be null
 
-  // we need a function to pass down to LoginPage or the Signup page to be called after
-  // the api request to login or sign up has been made
+
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getUser, gets the jwt from localstorage and decodes it
   }
@@ -28,14 +27,6 @@ export default function App() {
     // are we logged in?
     return (
       <Routes>
-        {/* <Route
-          path="/login"
-          element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-        />
-        <Route
-          path="/signup"
-          element={<SignUpPage handleSignUpOrLogin={handleSignUpOrLogin} />}
-        /> */}
         <Route
           path="/"
           element={
