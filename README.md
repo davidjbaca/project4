@@ -17,7 +17,7 @@ Job Tracker:
 
 Deadline: 1 Week
 
-With the layoffs nation wide recently I saw a need to keep up with your 
+With the layoffs nation wide recently a need to keep up with job applications, when applying through the many differnt websites appeared to be a job of it's self. This is an easy and clean way that isn't an excel spread sheet seemed like a great solution.
 
 
 # Screenshots:
