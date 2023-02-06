@@ -35,5 +35,5 @@ With the layoffs nation wide recently I saw a need to keep up with your
 1. Improve styling.
 2. Incorporate a notification to new employment postings.
 3. Layout the profile with you're personal goals and a link to resume, github, etc.
-4. Actual Admin functionality
-
+4. Set a priority list or most intrested that can be grouped in one seperate page. 
+5. Add a edit button or comment to add progress to app.
